@@ -37,10 +37,6 @@ const Elements = {
     icon: 'icon-chemistry',
     submenu: [
         {
-            text: 'Buttons',
-            link: '/elements/buttons'
-        },
-        {
             text: 'Interaction',
             link: '/elements/interaction'
         },
@@ -53,40 +49,12 @@ const Elements = {
             link: '/elements/sweetalert'
         },
         {
-            text: 'Spinners',
-            link: '/elements/spinners'
-        },
-        {
-            text: 'Dropdown',
-            link: '/elements/dropdown'
-        },
-        {
-            text: 'Nav Tree',
-            link: '/elements/navtree'
-        },
-        {
-            text: 'Sortable',
-            link: '/elements/sortable'
-        },
-        {
-            text: 'Grid',
-            link: '/elements/grid'
-        },
-        {
             text: 'Grid Masonry',
             link: '/elements/gridmasonry'
         },
         {
             text: 'Typography',
             link: '/elements/typography'
-        },
-        {
-            text: 'Font Icons',
-            link: '/elements/iconsfont'
-        },
-        {
-            text: 'Weahter Icons',
-            link: '/elements/iconsweather'
         },
         {
             text: 'Colors',

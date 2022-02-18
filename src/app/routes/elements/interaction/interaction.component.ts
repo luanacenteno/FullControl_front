@@ -92,8 +92,8 @@ export class InteractionComponent implements OnInit {
     public addSlide(id = 8): void {
         this.slides.push({
             image: 'assets/img/bg' + id + '.jpg',
-            text: `${['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4]}
-      ${['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4]}`
+            /*text: `${['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4]}
+      ${['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4]}`*/
         });
     }
 
