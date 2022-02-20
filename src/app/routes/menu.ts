@@ -5,6 +5,22 @@ const Home = {
     icon: 'icon-home'
 };
 
+const Users = {
+    text: 'Users',
+    link: '/users',
+    icon: 'fas fa-user',
+    submenu: [
+        {
+            text: 'Crear',
+            link: '/users/crear'
+        },
+        {
+            text: 'Listar',
+            link: '/users/listar'
+        }
+    ]
+}
+
 const Dashboard = {
     text: 'Dashboard',
     link: '/dashboard',
@@ -362,6 +378,7 @@ const headingMore = {
 export const menu = [
     headingMain,
     Home,
+    Users,
     Dashboard,
     Widgets,
     headingComponents,

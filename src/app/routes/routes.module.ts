@@ -7,6 +7,7 @@ import { PagesModule } from './pages/pages.module';
 
 import { menu } from './menu';
 import { routes } from './routes';
+//import { UsersComponent } from './users/users.component';
 
 @NgModule({
     imports: [
@@ -14,7 +15,9 @@ import { routes } from './routes';
         RouterModule.forRoot(routes),
         PagesModule
     ],
-    declarations: [],
+    declarations: [
+    //UsersComponent
+  ],
     exports: [
         RouterModule
     ]

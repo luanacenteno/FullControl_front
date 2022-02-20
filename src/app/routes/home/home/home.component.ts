@@ -14,17 +14,17 @@ export class HomeComponent implements OnInit {
 
     constructor() { 
         // init carousel
-        this.addSlide(4);
-        this.addSlide(7);
-        this.addSlide(8);
+        this.addSlide(1);
+        this.addSlide(2);
+        this.addSlide(3);
     }
 
     ngOnInit() { }
 
     // CAROUSEL METHODS
-    public addSlide(id = 8): void {
+    public addSlide(id = 3): void {
         this.slides.push({
-            image: 'assets/img/bg' + id + '.jpg',
+            image: 'assets/img/fc' + id + '.png',
             text: `${['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4]}
       ${['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4]}`
         });

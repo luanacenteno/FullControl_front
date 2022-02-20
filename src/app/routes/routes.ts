@@ -26,7 +26,8 @@ export const routes: Routes = [
             { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
             { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
             { path: 'ecommerce', loadChildren: () => import('./ecommerce/ecommerce.module').then(m => m.EcommerceModule) },
-            { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) }
+            { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
+            { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) }
         ]
     },
 

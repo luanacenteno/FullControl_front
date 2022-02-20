@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../../shared/shared.module';
-import { UsersComponent } from './users/users.component';
+import { ListarComponent } from './listar/listar.component';
+import { CrearComponent } from './crear/crear.component';
 
 const routes: Routes = [
-  { path: '', component: UsersComponent }
+  { path: 'listar', component: ListarComponent},
+  { path: 'crear', component: CrearComponent}
 ];
-
 
 @NgModule({
   
@@ -18,7 +19,8 @@ const routes: Routes = [
     SharedModule
   ],
   declarations: [
-    UsersComponent
+    ListarComponent,
+    CrearComponent
   ],
   exports: [
     RouterModule

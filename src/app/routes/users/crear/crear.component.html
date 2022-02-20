@@ -1,0 +1,30 @@
+
+<div class="col-md-6">
+    <!-- START card-->
+    <div class="card card-default">
+        <div class="card-header"><strong>Crear Usuario</strong></div>
+        <div class="card-body">
+            <form class="form-horizontal">
+                <div class="form-group row">
+                    <label class="col-xl-2 col-form-label">Nombre:</label>
+                    <div class="col-xl-10">
+                        <input [(ngModel)]="userForm.name" name="name" class="form-control" type="string" placeholder="Nombre" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2 col-form-label">Apellido:</label>
+                    <div class="col-xl-10">
+                        <input [(ngModel)]="userForm.lastName" name="lastName" class="form-control" type="string" placeholder="Apellido" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2 col-form-label"></label>
+                    <div class="col-xl-10">
+                        <button class="btn btn-sm btn-secondary" type="submit" (click)="createUser()">Crear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END card-->
+</div>

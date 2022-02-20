@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -11,12 +12,14 @@ const routes: Routes = [
 @NgModule({
     imports: [
         FormsModule,
+        CommonModule,
         RouterModule.forChild(routes),
         CarouselModule.forRoot(),
     ],
     declarations: [HomeComponent],
     exports: [
         RouterModule,
+        CommonModule,
         CarouselModule,
         FormsModule
     ]
