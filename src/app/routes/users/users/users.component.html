@@ -1,0 +1,30 @@
+<div class="content-heading">
+    <div>Tables
+       <small>Bootstrap Responsive tables</small></div>
+</div>
+<div class="card card-default">
+    <div class="card-header">Kitchen Sink</div>
+    <div class="card-body">
+       <!-- START table-responsive-->
+       <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+             <thead>
+                <tr>
+                   <th>#</th>
+                   <th>First Name</th>
+                   <th>Last Name</th>
+                   <th>Username</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr *ngFor="let user of users; let i = index">
+                   <td>{{user.id}}</td>
+                   <td>{{user.name}}</td>
+                   <td>{{user.last_name}}</td>
+                </tr>
+             </tbody>
+          </table>
+       </div>
+       <!-- END table-responsive-->
+    </div>
+ </div>
