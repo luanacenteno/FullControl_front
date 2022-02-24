@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+
 
 import { SharedModule } from '../../shared/shared.module';
 import { ListarComponent } from './listar/listar.component';
@@ -16,7 +18,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    AgGridModule.withComponents([ListarComponent]),
   ],
   declarations: [
     ListarComponent,

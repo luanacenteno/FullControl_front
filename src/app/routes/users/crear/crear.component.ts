@@ -15,17 +15,36 @@ export class CrearComponent implements OnInit {
 
   constructor(public http: HttpClient) { 
     this.userForm = {
-      name: '',
-      lastName: ''
+      razon: '',
+      sucursal: '',
+      representante: '',
+      direccion: '',
+      telefono: '',
+      email: '',
+      cuil: ''
     };
   }
 
   createUser() {
-    this.http.post('http://localhost:3000/users', {name: this.userForm.name, last_name: this.userForm.lastName}).subscribe(data => {
+    console.log('this.userForm', this.userForm);
+    this.http.post('http://localhost:3000/usuarios', {
+      razon: this.userForm.razon, 
+      sucursal: this.userForm.sucursal, 
+      representante: this.userForm.representante, 
+      direccion: this.userForm.direccion, 
+      telefono: this.userForm.telefono, 
+      email: this.userForm.email, 
+      cuil: this.userForm.cuil 
+    }).subscribe(data => {
       this.users = data
       this.userForm = {
-        name: '',
-        lastName: ''
+        razon: '',
+        sucursal: '',
+        representante: '',
+        direccion: '',
+        telefono: '',
+        email: '',
+        cuil: ''
       };
       swal("Perfecto!", "Usuario creado exitosamente", "success");
     });

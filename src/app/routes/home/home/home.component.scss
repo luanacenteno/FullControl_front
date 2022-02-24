@@ -4,8 +4,11 @@
 @import '../../../shared/styles/app/variables.scss';
 
 .home-container {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    max-width: map-get($container-max-widths, "lg");
+   // max-width: map-get($container-max-widths, "lg");
+    width: 80% !important;
 
     .home-logo {
         width: 240px;
@@ -18,6 +21,14 @@
         }
     }
     
+}
+
+.carousel{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+
 }
 
 .card-header{

@@ -5,6 +5,12 @@ const Home = {
     icon: 'icon-home'
 };
 
+const Auditorias = {
+    text: 'Auditorias',
+    link: '/auditorias',
+    icon: 'icon-note'
+};
+
 const Users = {
     text: 'Users',
     link: '/users',
@@ -378,6 +384,7 @@ const headingMore = {
 export const menu = [
     headingMain,
     Home,
+    Auditorias,
     Users,
     Dashboard,
     Widgets,

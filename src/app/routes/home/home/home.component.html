@@ -6,16 +6,16 @@
                     <img alt="full-control" class="img-fluid home-logo" src="assets/img/logo-fullcontrol.png" />
                 </div>
             </div>
-            <div class="col-xl-9 col-lg-8 home-text">
+            <!--<div class="col-xl-9 col-lg-8 home-text">
                 <br><p>
                     Los mejores profesionales a su servicio.
                 </p>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="pres">
-            <h3 class="page-header mt-0">Bienvenidos</h3>
-            <div>
+            <h3 class="page-header mt-0">Bienvenidos a Full Control</h3>
+            <div class="carousel">
                 <carousel [interval]="myInterval" [noWrap]="false">
                     <slide *ngFor="let slidez of slides; let index=index" [active]="slidez.active">
                         <img [src]="slidez.image" class="img-fluid">
