@@ -6,33 +6,9 @@
         <div class="card-body">
             <form class="form-horizontal">
                 <div class="form-group row">
-                    <label class="col-xl-2 col-form-label">Razón Social:</label>
+                    <label class="col-xl-2 col-form-label">Nombre:</label>
                     <div class="col-xl-10">
-                        <input [(ngModel)]="userForm.razon" name="razon" class="form-control" type="string" placeholder="Razón Social" [ngModelOptions]="{standalone: true}"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-xl-2 col-form-label">Sucursal:</label>
-                    <div class="col-xl-10">
-                        <input [(ngModel)]="userForm.sucursal" name="sucursal" class="form-control" type="string" placeholder="Sucursal" [ngModelOptions]="{standalone: true}"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-xl-2 col-form-label">Representante Legal:</label>
-                    <div class="col-xl-10">
-                        <input [(ngModel)]="userForm.representante" name="representante" class="form-control" type="string" placeholder="Representante Legal" [ngModelOptions]="{standalone: true}"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-xl-2 col-form-label">Dirección:</label>
-                    <div class="col-xl-10">
-                        <input [(ngModel)]="userForm.direccion" name="direccion" class="form-control" type="string" placeholder="Dirección" [ngModelOptions]="{standalone: true}"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-xl-2 col-form-label">Teléfono:</label>
-                    <div class="col-xl-10">
-                        <input [(ngModel)]="userForm.telefono" name="telefono" class="form-control" type="number" placeholder="Teléfono" [ngModelOptions]="{standalone: true}"/>
+                        <input [(ngModel)]="userForm.nombre" name="nombre" class="form-control" type="string" placeholder="Nombre" [ngModelOptions]="{standalone: true}"/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -42,12 +18,36 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-xl-2 col-form-label">CUIL:</label>
+                    <label class="col-xl-2 col-form-label">Teléfono:</label>
                     <div class="col-xl-10">
-                        <input [(ngModel)]="userForm.cuil" name="cuil" class="form-control" type="number" placeholder="Cuil" [ngModelOptions]="{standalone: true}"/>
+                        <input [(ngModel)]="userForm.telefono" name="telefono" class="form-control" type="string" placeholder="Telefono" [ngModelOptions]="{standalone: true}"/>
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label class="col-xl-2 col-form-label">Contraseña:</label>
+                    <div class="col-xl-10">
+                        <input [(ngModel)]="userForm.pass" name="pass" class="form-control" type="string" placeholder="Contraseña" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2 col-form-label">Rol:</label>
+                    <div class="col-xl-10">
+                        <input [(ngModel)]="userForm.rol" name="rol" class="form-control" type="string" placeholder="Rol" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2 col-form-label">Dirección:</label>
+                    <div class="col-xl-10">
+                        <input [(ngModel)]="userForm.direccion" name="direccion" class="form-control" type="string" placeholder="Dirección" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2 col-form-label">Rubro:</label>
+                    <div class="col-xl-10">
+                        <input [(ngModel)]="userForm.rubro" name="rubro" class="form-control" type="string" placeholder="Rubro" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                </div>
+                <div class="form-group row"> 
                     <label class="col-xl-2 col-form-label"></label>
                     <div class="col-xl-10">
                         <button class="btn btn-sm btn-secondary" type="submit" (click)="createUser()">Crear</button>

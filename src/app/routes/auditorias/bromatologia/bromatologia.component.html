@@ -1,0 +1,42 @@
+<div class="content-heading">
+    <div>Bromatología
+        <!--<small>Auditoria</small>-->
+    </div>
+    
+</div>
+<!-- START row-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+                <!-- START card-->
+                <div class="card card-default">
+                    <div class="card-body">
+                        <fieldset>
+                            <div class="form-group row">
+                                <label class="col-lg-2 col-form-label text-lg-right">Estado de pisos</label>
+                                <div class="col-lg-6">
+                                    <div class="c-radio">
+                                        <label>
+                                            <input type="radio" formControlName="radio" value="option1" />
+                                            <span class="fa fa-circle"></span>Option one</label>
+                                    </div>
+                                    <div class="c-radio">
+                                        <label>
+                                            <input type="radio" formControlName="radio" value="option2" />
+                                            <span class="fa fa-circle"></span>Option two</label>
+                                    </div>
+                                    <span class="text-danger" *ngIf="valForm.controls['radio'].hasError('required') && (valForm.controls['radio'].dirty || valForm.controls['radio'].touched)">This field is required</span>
+                                </div>
+                                <div class="col-lg-4"></div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <!-- END card-->
+            </form>
+        </div>
+    </div>
+    <!-- END row-->
+
+</div>

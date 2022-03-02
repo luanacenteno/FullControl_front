@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BromatologiaComponent } from './bromatologia/bromatologia.component';
-
+import { CalendarioComponent } from './calendario/calendario.component';
 import { Routes, RouterModule } from '@angular/router';
+
 import { SharedModule } from '../../shared/shared.module';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 const routes: Routes = [
-  { path: 'bromatologia', component: BromatologiaComponent }
-];
+  { path: '', component: CalendarioComponent },
+]
 
 @NgModule({
   declarations: [
-    BromatologiaComponent,
+    CalendarioComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    FullCalendarModule,
+    RouterModule.forChild(routes),
   ],
   exports: [
     RouterModule
-]
+  ]
 })
-export class AuditoriasModule { }
+export class CalendarioModule { }

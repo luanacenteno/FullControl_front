@@ -18,16 +18,10 @@ export const routes: Routes = [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
             { path: 'auditorias', loadChildren: () => import('./auditorias/auditorias.module').then(m => m.AuditoriasModule) },
+            { path: 'calendario', loadChildren: () => import('./calendario/calendario.module').then(m => m.CalendarioModule) },
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-            { path: 'widgets', loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule) },
-            { path: 'elements', loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule) },
             { path: 'forms', loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule) },
             { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
-            { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },
-            { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
-            { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
-            { path: 'ecommerce', loadChildren: () => import('./ecommerce/ecommerce.module').then(m => m.EcommerceModule) },
-            { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
             { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) }
         ]
     },

@@ -8,7 +8,13 @@ const Home = {
 const Auditorias = {
     text: 'Auditorias',
     link: '/auditorias',
-    icon: 'icon-note'
+    icon: 'icon-note',
+    submenu: [
+        {
+            text: 'Bromatologia',
+            link: '/auditorias/bromatologia'
+        }
+    ]
 };
 
 const Users = {
@@ -25,7 +31,13 @@ const Users = {
             link: '/users/listar'
         }
     ]
-}
+};
+
+/*const Calendario = {
+    text: 'Calendario',
+    link: '/calendario',
+    icon: 'icon-notebook'
+};
 
 const Dashboard = {
     text: 'Dashboard',
@@ -46,49 +58,7 @@ const Dashboard = {
         }
     ]
 };
-
-const Widgets = {
-    text: 'Widgets',
-    link: '/widgets',
-    icon: 'icon-grid'
-};
-
-const Elements = {
-    text: 'Elements',
-    link: '/elements',
-    icon: 'icon-chemistry',
-    submenu: [
-        {
-            text: 'Interaction',
-            link: '/elements/interaction'
-        },
-        {
-            text: 'Notification',
-            link: '/elements/notification'
-        },
-        {
-            text: 'SweetAlert',
-            link: '/elements/sweetalert'
-        },
-        {
-            text: 'Grid Masonry',
-            link: '/elements/gridmasonry'
-        },
-        {
-            text: 'Typography',
-            link: '/elements/typography'
-        },
-        {
-            text: 'Colors',
-            link: '/elements/colors'
-        },
-        {
-            text: 'Infinite Scroll',
-            link: '/elements/infinitescroll'
-        }
-    ]
-};
-
+*/
 const Forms = {
     text: 'Forms',
     link: '/forms',
@@ -117,7 +87,7 @@ const Forms = {
     ]
 };
 
-const Charts = {
+/*const Charts = {
     text: 'Charts',
     link: '/charts',
     icon: 'icon-graph',
@@ -133,46 +103,6 @@ const Charts = {
         {
             text: 'ChartJS',
             link: '/charts/chartjs'
-        }
-    ]
-};
-
-const Tables = {
-    text: 'Tables',
-    link: '/tables',
-    icon: 'icon-grid',
-    submenu: [
-        {
-            text: 'Standard',
-            link: '/tables/standard'
-        },
-        {
-            text: 'Extended',
-            link: '/tables/extended'
-        },
-        {
-            text: 'Angular Grid',
-            link: '/tables/aggrid'
-        },
-        {
-            text: 'NGxDatatables',
-            link: '/tables/ngxdatatable'
-        }
-    ]
-};
-
-const Maps = {
-    text: 'Maps',
-    link: '/maps',
-    icon: 'icon-map',
-    submenu: [
-        {
-            text: 'Google',
-            link: '/maps/google'
-        },
-        {
-            text: 'Vector',
-            link: '/maps/vector'
         }
     ]
 };
@@ -213,190 +143,19 @@ const Pages = {
     ]
 };
 
-const Blog = {
-    text: 'Blog',
-    link: '/blog',
-    icon: 'icon-notebook',
-    submenu: [
-        {
-            text: 'List',
-            link: '/blog/list'
-        },
-        {
-            text: 'Post',
-            link: '/blog/post'
-        },
-        {
-            text: 'Articles',
-            link: '/blog/articles'
-        },
-        {
-            text: 'Article View',
-            link: '/blog/articleview'
-        }
-    ]
-}
-
-const Ecommerce = {
-    text: 'Ecommerce',
-    link: '/ecommerce',
-    icon: 'icon-basket-loaded',
-    submenu: [
-        {
-            text: 'Orders',
-            link: '/ecommerce/orders'
-        },
-        {
-            text: 'Order View',
-            link: '/ecommerce/orderview'
-        },
-        {
-            text: 'Products',
-            link: '/ecommerce/products'
-        },
-        {
-            text: 'Product View',
-            link: '/ecommerce/productview'
-        },
-        {
-            text: 'Checkout',
-            link: '/ecommerce/checkout'
-        }
-    ]
-}
-
-const Extras = {
-    text: 'Extras',
-    link: '/extras',
-    icon: 'icon-cup',
-    submenu: [
-        {
-            text: 'Contacts',
-            link: '/extras/contacts'
-        },
-        {
-            text: 'Contact details',
-            link: '/extras/contactdetails'
-        },
-        {
-            text: 'Projects',
-            link: '/extras/projects'
-        },
-        {
-            text: 'Projects details',
-            link: '/extras/projectsdetails'
-        },
-        {
-            text: 'Team Viewer',
-            link: '/extras/teamviewer'
-        },
-        {
-            text: 'Social Board',
-            link: '/extras/socialboard'
-        },
-        {
-            text: 'Vote links',
-            link: '/extras/votelinks'
-        },
-        {
-            text: 'Bug tracker',
-            link: '/extras/bugtracker'
-        },
-        {
-            text: 'Faq',
-            link: '/extras/faq'
-        },
-        {
-            text: 'Help center',
-            link: '/extras/helpcenter'
-        },
-        {
-            text: 'Followers',
-            link: '/extras/followers'
-        },
-        {
-            text: 'Settings',
-            link: '/extras/settings'
-        },
-        {
-            text: 'Plans',
-            link: '/extras/plans'
-        },
-        {
-            text: 'File manager',
-            link: '/extras/filemanager'
-        },
-        {
-            text: 'Forum',
-            link: '/extras/forum'
-        },
-        {
-            text: 'Mailbox',
-            link: '/extras/mailbox'
-        },
-        {
-            text: 'Timeline',
-            link: '/extras/timeline'
-        },
-        {
-            text: 'Calendar',
-            link: '/extras/calendar'
-        },
-        {
-            text: 'Invoice',
-            link: '/extras/invoice'
-        },
-        {
-            text: 'Search',
-            link: '/extras/search'
-        },
-        {
-            text: 'Todo list',
-            link: '/extras/todolist'
-        },
-        {
-            text: 'Profile',
-            link: '/extras/profile'
-        },
-        {
-            text: 'Code editor',
-            link: '/extras/codeeditor'
-        }
-    ]
-}
-
-
 const headingMain = {
     text: 'Main Navigation',
     heading: true
-};
-
-const headingComponents = {
-    text: 'asdasd',
-    heading: true
-};
-
-const headingMore = {
-    text: 'More',
-    heading: true
-};
+};*/
 
 export const menu = [
-    headingMain,
+    //headingMain,
     Home,
     Auditorias,
     Users,
-    Dashboard,
-    Widgets,
-    headingComponents,
-    Elements,
+    //Calendario,
+    //Dashboard,
     Forms,
-    Charts,
-    Tables,
-    Maps,
-    headingMore,
-    Pages,
-    Blog,
-    Ecommerce,
-    Extras
+    //Charts,
+    //Pages
 ];
