@@ -1,42 +1,80 @@
+
 <div class="content-heading">
-    <div>Bromatología
-        <!--<small>Auditoria</small>-->
+    <div> <h1>Auditoria de Bromatologia</h1> <br>
+        <h4>Indicar en la tabla adjunta, de acuerdo al parametro evaluado:</h4>
     </div>
-    
 </div>
-<!-- START row-->
-<div class="container-fluid">
+
+ <!--START row-->
+<div *ngIf="filtros" class="container-fluid">
+    <!--<fieldset class="last-child">
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Auditorias en curso</label>
+                <select [(ngModel)]="auditoriaSeleccionada" class="custom-select custom-select-sm">
+                    <option *ngFor="let auditoria of auditorias" value="{{auditoria.id}}">{{auditoria.nombre}} ({{auditoria.id}})</option>
+                </select>
+        </div>
+    </fieldset>-->
+    <fieldset class="last-child">
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Clientes {{clienteSeleccionado}}</label>
+                <select [(ngModel)]="clienteSeleccionado" class="custom-select custom-select-sm">
+                    <option *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nombre}} <span class="text-secondary font-weight-bold" *ngIf="cliente.auditoria_id"> // Auditoria abierta: {{cliente.auditoria_id}} - {{cliente.fecha}}</span></option>
+                </select>
+        </div>
+    </fieldset>
+    <fieldset class="last-child">
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Categorias</label>
+                <select [(ngModel)]="categoriaSeleccionada" class="custom-select custom-select-sm">
+                    <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nombre}} ({{categoria.id}})</option>
+                </select>
+        </div>
+    </fieldset>
+    <fieldset class="last-child">
+        <div class="form-group row">
+            <div class="text-center col-md-3" *ngIf="categoriaSeleccionada && clienteSeleccionado">
+                <button class="btn btn-info" (click)="auditar()">Auditar</button>
+            </div>
+            <!--<div class="text-center col-md-3" *ngIf="categoriaSeleccionada && clienteSeleccionado">
+                <button class="btn btn-info" (click)="continuarAuditoria()">Continuar auditoría</button>
+            </div>
+            <div class="text-center col-md-3" *ngIf="categoriaSeleccionada && auditoriaSeleccionada">
+                <button class="btn btn-info" (click)="iniciarAuditoria()">Iniciar auditoría</button>
+            </div>-->
+        </div>
+    </fieldset>
+</div>
+<div *ngIf="!filtros" class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate="">
+            <!-- <form [formGroup]="valForm" class="form-validate form-horizontal" (submit)="submitForm($event, valForm.value)" novalidate=""> -->
                 <!-- START card-->
                 <div class="card card-default">
                     <div class="card-body">
-                        <fieldset>
+                        <fieldset class="b0">
+                            <legend>{{nombreCategoria}}</legend>
+                        </fieldset>
+                        <fieldset *ngFor="let requisito of requisitos">
                             <div class="form-group row">
-                                <label class="col-lg-2 col-form-label text-lg-right">Estado de pisos</label>
-                                <div class="col-lg-6">
-                                    <div class="c-radio">
-                                        <label>
-                                            <input type="radio" formControlName="radio" value="option1" />
-                                            <span class="fa fa-circle"></span>Option one</label>
-                                    </div>
-                                    <div class="c-radio">
-                                        <label>
-                                            <input type="radio" formControlName="radio" value="option2" />
-                                            <span class="fa fa-circle"></span>Option two</label>
-                                    </div>
-                                    <span class="text-danger" *ngIf="valForm.controls['radio'].hasError('required') && (valForm.controls['radio'].dirty || valForm.controls['radio'].touched)">This field is required</span>
+                                <label class="col-md-2 col-form-label">{{requisito.nombre}}</label>
+                                <div class="col-md-10">
+                                    <label class="c-radio"><input id="inlineradio1" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="2"  /><span class="fa fa-circle"></span>Cumplimiento total </label>
+                                    <label class="c-radio"><input id="inlineradio2" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="1"  /><span class="fa fa-circle"></span>Cumplimiento parcial </label>
+                                    <label class="c-radio"><input id="inlineradio3" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="0"  /><span class="fa fa-circle"></span>No se cumple </label>
+                                    <label class="c-radio"><input id="inlineradio4" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="'NA'"  /><span class="fa fa-circle"></span>No aplica al local</label>
                                 </div>
-                                <div class="col-lg-4"></div>
                             </div>
                         </fieldset>
                     </div>
+                    <div class="text-info" style="text-align: center; margin-bottom: 20px;">
+                        <button class="btn btn-info" (click)="guardar()">Enviar</button>
+                    </div>
                 </div>
-                <!-- END card-->
-            </form>
+            <!-- </form> -->
         </div>
     </div>
-    <!-- END row-->
-
+    <div class="text-left">
+        <button class="btn btn-secondary" (click)="verFiltros()">Volver</button>
+    </div>
 </div>

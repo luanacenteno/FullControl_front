@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 
-const themeA = require('../../shared/styles/themes/theme-a.scss');
+/*const themeA = require('../../shared/styles/themes/theme-a.scss');
 const themeB = require('../../shared/styles/themes/theme-b.scss');
 const themeC = require('../../shared/styles/themes/theme-c.scss');
-const themeD = require('../../shared/styles/themes/theme-d.scss');
+const themeD = require('../../shared/styles/themes/theme-d.scss');*/
 const themeE = require('../../shared/styles/themes/theme-e.scss');
-const themeF = require('../../shared/styles/themes/theme-f.scss');
+/*const themeF = require('../../shared/styles/themes/theme-f.scss');
 const themeG = require('../../shared/styles/themes/theme-g.scss');
-const themeH = require('../../shared/styles/themes/theme-h.scss');
+const themeH = require('../../shared/styles/themes/theme-h.scss');*/
 
 @Injectable()
 export class ThemesService {
 
     styleTag: any;
-    defaultTheme: string = 'A';
+    defaultTheme: string = 'E';
 
     constructor() {
         this.createStyle();
@@ -30,7 +30,7 @@ export class ThemesService {
 
     setTheme(name) {
         switch (name) {
-            case 'A':
+            /*case 'A':
                 this.injectStylesheet(themeA);
                 break;
             case 'B':
@@ -41,11 +41,11 @@ export class ThemesService {
                 break;
             case 'D':
                 this.injectStylesheet(themeD);
-                break;
+                break;*/
             case 'E':
                 this.injectStylesheet(themeE);
                 break;
-            case 'F':
+            /*case 'F':
                 this.injectStylesheet(themeF);
                 break;
             case 'G':
@@ -53,7 +53,7 @@ export class ThemesService {
                 break;
             case 'H':
                 this.injectStylesheet(themeH);
-                break;
+                break;*/
         }
     }
 
