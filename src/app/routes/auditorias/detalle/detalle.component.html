@@ -1,0 +1,70 @@
+<div class="content-heading" style="color: white; background-color: #4f5568;" >
+    DETALLES DE AUDITORIA:&nbsp;&nbsp;&nbsp;<strong>{{auditoria.cliente}}</strong>
+</div>
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div class="card b">
+            <div class="card-header" style="font-size: large;"> 
+                    <strong>Puntaje total: {{auditoria.puntaje_total}} de {{auditoria.puntaje_maximo}}</strong>
+            </div>
+    
+
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="w-100">
+                        <div tooltip="Porcentaje cumplimiento">
+                            <div class="progress progress-xs m-0">
+                                <progressbar class="progress-xs m-0" type="{{auditoria.puntaje_porcentaje < 60 ? 'warning': 'success'}}" [value]="auditoria.puntaje_porcentaje"></progressbar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div  *ngFor="let categoria of categorias">
+            <div class="card b" *ngIf="auditoria.categorias[categoria.nombre]">
+                <div class="card-header">
+                    <div class="float-right">
+                        <div class="badge badge-{{auditoria.categorias[categoria.nombre].puntaje_porcentaje < 60 ? 'danger': 'success'}}">{{auditoria.categorias[categoria.nombre].puntaje_porcentaje < 60 ? 'No cumple': 'Cumple'}}</div>
+                    </div>
+                    <h4 class="m-0">{{categoria.nombre}}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="w-100">
+                            <div tooltip="Porcentaje cumplimiento">
+                                <div class="progress progress-xs m-0">
+                                    <progressbar class="progress-xs m-0" type="{{auditoria.categorias[categoria.nombre].puntaje_porcentaje < 60 ? 'warning': 'success'}}" [value]="auditoria.categorias[categoria.nombre].puntaje_porcentaje"></progressbar>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wd-xxs text-right">
+                            <div class="text-bold text-muted">Puntos: {{auditoria.categorias[categoria.nombre].puntaje_total}} de {{auditoria.categorias[categoria.nombre].puntaje_maximo}}</div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let requisito of auditoria.categorias[categoria.nombre].requisitos">
+                            <td>
+                                <strong>{{requisito.nombre}} </strong>
+                            </td>
+                            <td tooltip="{{requisito.detalle}}"><a href="{{requisito.url}}">{{requisito.normativa}}</a></td>
+                            <td>{{requisito.puntaje_nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <strong class="text-info">Acciones a tomar:&nbsp;</strong><span class="text-danger"> Clausurar el lugar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-left">
+    <button class="btn btn-secondary" >Volver</button>
+</div>

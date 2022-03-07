@@ -19,7 +19,7 @@
         <div class="form-group row">
             <label class="col-md-2 col-form-label">Clientes {{clienteSeleccionado}}</label>
                 <select [(ngModel)]="clienteSeleccionado" class="custom-select custom-select-sm">
-                    <option *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nombre}} <span class="text-secondary font-weight-bold" *ngIf="cliente.auditoria_id"> // Auditoria abierta: {{cliente.auditoria_id}} - {{cliente.fecha}}</span></option>
+                    <option *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nombre}} <span class="text-secondary font-weight-bold" *ngIf="cliente.auditoria_id"> // Auditoria abierta: {{cliente.auditoria_id}} - {{cliente.categorias}}</span></option>
                 </select>
         </div>
     </fieldset>
@@ -60,9 +60,9 @@
                                 <label class="col-md-2 col-form-label">{{requisito.nombre}}</label>
                                 <div class="col-md-10">
                                     <label class="c-radio"><input id="inlineradio1" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="2"  /><span class="fa fa-circle"></span>Cumplimiento total </label>
-                                    <label class="c-radio"><input id="inlineradio2" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="1"  /><span class="fa fa-circle"></span>Cumplimiento parcial </label>
-                                    <label class="c-radio"><input id="inlineradio3" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="0"  /><span class="fa fa-circle"></span>No se cumple </label>
-                                    <label class="c-radio"><input id="inlineradio4" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="'NA'"  /><span class="fa fa-circle"></span>No aplica al local</label>
+                                    <label class="c-radio"><input id="inlineradio4" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="1"  /><span class="fa fa-circle"></span>Cumplimiento parcial </label>
+                                    <label class="c-radio"><input id="inlineradio2" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="0"  /><span class="fa fa-circle"></span>No se cumple </label>
+                                    <label class="c-radio"><input id="inlineradio3" type="radio" [(ngModel)]="requisito.puntaje" name="{{requisito.id}}" [value]="-1"  /><span class="fa fa-circle"></span>No aplica al local</label>
                                 </div>
                             </div>
                         </fieldset>

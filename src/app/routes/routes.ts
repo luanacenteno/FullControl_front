@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from '../layout/layout.component';
 
-import { LoginComponent } from './pages/login/login.component';
+/*import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoverComponent } from './pages/recover/recover.component';
 import { LockComponent } from './pages/lock/lock.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { Error404Component } from './pages/error404/error404.component';
-import { Error500Component } from './pages/error500/error500.component';
+import { Error500Component } from './pages/error500/error500.component';*/
 
 export const routes: Routes = [
 
@@ -18,15 +18,11 @@ export const routes: Routes = [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
             { path: 'auditorias', loadChildren: () => import('./auditorias/auditorias.module').then(m => m.AuditoriasModule) },
-            { path: 'calendario', loadChildren: () => import('./calendario/calendario.module').then(m => m.CalendarioModule) },
-            { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-            { path: 'forms', loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule) },
-            { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
             { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) }
         ]
     },
 
-    // Not lazy-loaded routes
+   /* // Not lazy-loaded routes
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'recover', component: RecoverComponent },
@@ -34,7 +30,7 @@ export const routes: Routes = [
     { path: 'maintenance', component: MaintenanceComponent },
     { path: '404', component: Error404Component },
     { path: '500', component: Error500Component },
-
+*/
     // Not found
     { path: '**', redirectTo: 'home' }
 

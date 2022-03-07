@@ -1,0 +1,15 @@
+<div class="content-heading">
+    <div>Lista de Auditorias
+       <!--<small>Auditorias</small>-->
+    </div>
+ </div>
+ <div class="container-fluid">
+    <!-- Filter Example-->
+    <div class="row">
+        <div class="col-xl-4 col-lg-6">
+            <input class="mb form-control" placeholder="Filter..." type="text" (keyup)="onQuickFilterChanged($event)" />
+        </div>
+    </div>
+    <ag-grid-angular #agGrid [rowData]="auditorias" class="ag-angle" style="width: 100%; height: 400px" 
+                        [frameworkComponents]="frameworkComponents" [gridOptions]="gridOptions" (gridReady)="gridReady($event)" enableFilter></ag-grid-angular>
+ </div>

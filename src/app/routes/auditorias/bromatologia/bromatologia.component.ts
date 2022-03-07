@@ -49,20 +49,6 @@ export class BromatologiaComponent implements OnInit {
             requisito_id: '',
         };
 
-        http.get('http://localhost:3000/requisitos').subscribe(data => {
-            console.log('requisitos', data);
-            this.requisitos = data
-        });
-
-        http.get('http://localhost:3000/usuarios/auditoria?rol=cliente').subscribe(data => {
-            console.log('usuarios', data);
-            this.clientes = data
-        });
-
-        http.get('http://localhost:3000/categorias').subscribe(data => {
-            console.log('categorias', data);
-            this.categorias = data
-        });
 
         //Traer auditorias abiertas
         /*http.get('http://localhost:3000/auditorias?estado=abierta').subscribe(data => {
@@ -111,21 +97,19 @@ export class BromatologiaComponent implements OnInit {
   auditar() {
       // El cliente ya tiene una auditoria en proceso
 
-    this.auditoria = this.getDropDownText(this.clienteSeleccionado, this.clientes)[0];
+    const clienteAuditoria = this.getDropDownText(this.clienteSeleccionado, this.clientes)[0];
     console.log('auditoria', this.auditoria, this.clienteSeleccionado, this.clientes);
-    if(this.auditoria.auditoria_id){
+    if(clienteAuditoria.auditoria_id){
         const categoria = this.getDropDownText(this.categoriaSeleccionada, this.categorias)[0];
         if (!categoria) {
             alert('Seleccione categoria');
             return;
         }
         this.nombreCategoria = categoria.nombre;
-        //this.auditoria = this.getDropDownText(this.auditoriaSeleccionada, this.auditorias)[0];
-        console.log('auditoria', this.auditoria);
-        this.http.get('http://localhost:3000/auditorias/' + this.auditoria.id).subscribe(dataAuditoria => {
+        this.http.get('http://localhost:3000/auditorias/' + clienteAuditoria.auditoria_id).subscribe(dataAuditoria => {
             console.log('Response continuarAuditoria', dataAuditoria);
             this.auditoria = dataAuditoria;
-            console.log('continuarAuditoriaa**', this.auditoria.id);
+            console.log('continuarAuditoriaa**', clienteAuditoria.auditoria_id);
             
             this.http.get('http://localhost:3000/requisitos?categoria=' + categoria.id).subscribe(data => {
                 this.requisitos = data;
@@ -224,6 +208,8 @@ export class BromatologiaComponent implements OnInit {
         requisito_id: ''
       };
       swal("Perfecto!", "Tu auditoria se ha guardado correctamente", "success");
+      this.filtros = true;
+      this.ngOnInit();
     });
   }
 
@@ -273,6 +259,20 @@ export class BromatologiaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.http.get('http://localhost:3000/requisitos').subscribe(data => {
+        console.log('requisitos', data);
+        this.requisitos = data
+    });
+
+    this.http.get('http://localhost:3000/usuarios/auditoria?rol=cliente').subscribe(data => {
+        console.log('usuarios', data);
+        this.clientes = data
+    });
+
+    this.http.get('http://localhost:3000/categorias').subscribe(data => {
+        console.log('categorias', data);
+        this.categorias = data
+    });
   }
 
 }
