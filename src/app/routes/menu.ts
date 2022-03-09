@@ -41,5 +41,6 @@ const Users = {
 export const menu = [
     Home,
     Auditorias,
-    Users
+    Users,
+
 ];

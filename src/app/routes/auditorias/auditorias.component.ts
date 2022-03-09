@@ -52,7 +52,7 @@ export class AuditoriasComponent implements OnInit, OnDestroy {
 
   auditorias: any;
 
-  constructor(public http: HttpClient) { 
+  constructor( public http: HttpClient) { 
     // Filter example
     this.gridOptions = {
       headerHeight: 40,
@@ -62,9 +62,9 @@ export class AuditoriasComponent implements OnInit, OnDestroy {
     };
   }
 
+
   ngOnInit(): void {
     this.http.get('http://localhost:3000/auditorias').subscribe(data => {
-        console.log('auditorias', data);
         this.auditorias = data
     });
   }

@@ -36,6 +36,9 @@
             <div class="text-center col-md-3" *ngIf="categoriaSeleccionada && clienteSeleccionado">
                 <button class="btn btn-info" (click)="auditar()">Auditar</button>
             </div>
+            <div class="text-center col-md-3" *ngIf="clienteSeleccionado">
+                <button class="btn btn-info" (click)="terminar()">Terminar</button>
+            </div>
             <!--<div class="text-center col-md-3" *ngIf="categoriaSeleccionada && clienteSeleccionado">
                 <button class="btn btn-info" (click)="continuarAuditoria()">Continuar auditoría</button>
             </div>

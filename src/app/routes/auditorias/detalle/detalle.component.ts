@@ -1,6 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { ColorsService } from '../../../shared/colors/colors.service';
 
 @Component({
@@ -10,10 +11,17 @@ import { ColorsService } from '../../../shared/colors/colors.service';
 })
 export class DetalleComponent implements OnInit {
 
-    auditoria;
+    auditoria: any = { cliente:"" };
     categorias;
 
-    constructor(public colors: ColorsService, public http: HttpClient) { }
+    constructor(private router:Router, public colors: ColorsService, public http: HttpClient) {
+      
+    }
+      
+
+    volver() {
+      this.router.navigate(['auditorias']);
+    }
 
     ngOnInit() {
       const auditoria_id = location.pathname.split('/').pop();
@@ -26,7 +34,6 @@ export class DetalleComponent implements OnInit {
         console.log('categorias', data);
         this.categorias = data
       });
-      
     }
 
 }

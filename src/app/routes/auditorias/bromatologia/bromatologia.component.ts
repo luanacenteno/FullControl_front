@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormGroup, FormBuilder, Validators, FormControl, ValidatorFn } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
 import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
-import { BodyDropTarget } from 'ag-grid-community';
+import { Router } from '@angular/router';
 
 const swal = require('sweetalert');
 const BROMATOLOGIA = 1;
@@ -16,7 +17,6 @@ const BROMATOLOGIA = 1;
 
 export class BromatologiaComponent implements OnInit {
 
-
     //Iniciar auditoria
 
     categoriaSeleccionada;
@@ -26,7 +26,7 @@ export class BromatologiaComponent implements OnInit {
     nombreCategoria = "";
 
     //Continuar auditoria
-    estado = "klñ";
+    estado = "";
     idAuditoria = 1;
     auditoriaId;
     auditoria;
@@ -41,21 +41,15 @@ export class BromatologiaComponent implements OnInit {
     valForm: FormGroup;
     blackList = ['bad@email.com', 'some@mail.com', 'wrong@email.co'];
 
-    constructor(fb: FormBuilder, public http: HttpClient) {
+    constructor( fb: FormBuilder, public http: HttpClient, private router: Router) {
 
+        
+        
         this.saveForm= {
             puntos: '',
             auditoria_id: '',
             requisito_id: '',
         };
-
-
-        //Traer auditorias abiertas
-        /*http.get('http://localhost:3000/auditorias?estado=abierta').subscribe(data => {
-            console.log('auditorias', data);
-            this.auditorias = data
-        });*/
-
 
       let password = new FormControl('', Validators.required);
       let certainPassword = new FormControl('', CustomValidators.equalTo(password));
@@ -98,7 +92,6 @@ export class BromatologiaComponent implements OnInit {
       // El cliente ya tiene una auditoria en proceso
 
     const clienteAuditoria = this.getDropDownText(this.clienteSeleccionado, this.clientes)[0];
-    console.log('auditoria', this.auditoria, this.clienteSeleccionado, this.clientes);
     if(clienteAuditoria.auditoria_id){
         const categoria = this.getDropDownText(this.categoriaSeleccionada, this.categorias)[0];
         if (!categoria) {
@@ -107,9 +100,7 @@ export class BromatologiaComponent implements OnInit {
         }
         this.nombreCategoria = categoria.nombre;
         this.http.get('http://localhost:3000/auditorias/' + clienteAuditoria.auditoria_id).subscribe(dataAuditoria => {
-            console.log('Response continuarAuditoria', dataAuditoria);
             this.auditoria = dataAuditoria;
-            console.log('continuarAuditoriaa**', clienteAuditoria.auditoria_id);
             
             this.http.get('http://localhost:3000/requisitos?categoria=' + categoria.id).subscribe(data => {
                 this.requisitos = data;
@@ -125,12 +116,9 @@ export class BromatologiaComponent implements OnInit {
             usuario_id: 1,
             cliente_id: this.clienteSeleccionado,
         };
-        console.log('iniciarAuditoria', body);
         // Creamos una nueva auditoria
         this.http.post('http://localhost:3000/auditorias', body).subscribe(dataAuditoria => {
-            console.log('Response auditoria', dataAuditoria);
             this.auditoria = dataAuditoria;
-            console.log('auditoriaa**', this.auditoria.id);
             this.nombreCategoria = this.getDropDownText(this.categoriaSeleccionada, this.categorias)[0].nombre;
             this.http.get('http://localhost:3000/requisitos?categoria=' + this.categoriaSeleccionada).subscribe(data => {
                 this.requisitos = data;
@@ -141,55 +129,18 @@ export class BromatologiaComponent implements OnInit {
     
   }
 
+  terminar(){
+    const clienteAuditoria = this.getDropDownText(this.clienteSeleccionado, this.clientes)[0];
+    if(clienteAuditoria.auditoria_id){
+        this.http.put('http://localhost:3000/auditorias/' + clienteAuditoria.auditoria_id, {}).subscribe(dataAuditoria => {
+            this.auditoria = dataAuditoria;
+        })
 
-  /*iniciarAuditoria() {
-    const body = {
-        servicio_id: BROMATOLOGIA,
-        // TODO: Obtener usuario de la session
-        usuario_id: 1,
-        cliente_id: this.clienteSeleccionado,
-    };
-    console.log('iniciarAuditoria', body);
-    // Creamos una nueva auditoria
-    this.http.post('http://localhost:3000/auditorias', body).subscribe(dataAuditoria => {
-        console.log('Response auditoria', dataAuditoria);
-        this.auditoria = dataAuditoria;
-        console.log('auditoriaa**', this.auditoria.auditoria_id);
-        this.nombreCategoria = this.getDropDownText(this.categoriaSeleccionada, this.categorias)[0].nombre;
-        this.http.get('http://localhost:3000/requisitos?categoria=' + this.categoriaSeleccionada).subscribe(data => {
-            this.requisitos = data;
-            this.filtros = false;
-        });
-    });
-  }
-
-  continuarAuditoria() {
-    const categoria = this.getDropDownText(this.categoriaSeleccionada, this.categorias)[0];
-    if (!categoria) {
-        alert('Seleccione categoria');
-        return;
     }
-    this.nombreCategoria = categoria.nombre;
-    this.auditoria = this.getDropDownText(this.auditoriaSeleccionada, this.auditorias)[0];
-    console.log('auditoria', this.auditoria);
-    this.http.get('http://localhost:3000/auditorias/' + this.auditoria.id).subscribe(dataAuditoria => {
-        console.log('Response continuarAuditoria', dataAuditoria);
-        this.auditoria = dataAuditoria;
-        console.log('continuarAuditoriaa**', this.auditoria.auditoria_id);
-        
-        this.http.get('http://localhost:3000/requisitos?categoria=' + categoria.id).subscribe(data => {
-            this.requisitos = data;
-            this.estado = "cerrada";
-            this.filtros = false;
-        });
-    });
-  }*/
-
-
+    this.ngOnInit();
+    
+}   
   guardar() {
-    console.log('this.saveForm', this.saveForm);
-    console.log('requisitos: ', this.requisitos);
-    console.log('auditoria: ', this.auditoria);
 
     let body: any[] = [];
     this.requisitos.forEach(requisito => {
@@ -199,7 +150,6 @@ export class BromatologiaComponent implements OnInit {
             puntaje: requisito.puntaje
         });
     });
-    console.log('body', body);
     this.http.post('http://localhost:3000/puntos_requisitos_auditoria', body).subscribe(data => {
       this.save = data
       this.saveForm = {
@@ -219,7 +169,6 @@ export class BromatologiaComponent implements OnInit {
   }
 
   onItemChange(value, requisito){
-    console.log(" Value is : ", value , " Requisito: ", requisito);
  }
 
   getDropDownText(id, object){
@@ -235,9 +184,7 @@ export class BromatologiaComponent implements OnInit {
           this.valForm.controls[c].markAsTouched();
       }
       if (this.valForm.valid) {
-          console.log('Valid!');
       }
-      console.log(value);
   }
 
   minWords(checkValue): ValidatorFn {
@@ -260,17 +207,14 @@ export class BromatologiaComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get('http://localhost:3000/requisitos').subscribe(data => {
-        console.log('requisitos', data);
         this.requisitos = data
     });
 
     this.http.get('http://localhost:3000/usuarios/auditoria?rol=cliente').subscribe(data => {
-        console.log('usuarios', data);
         this.clientes = data
     });
 
     this.http.get('http://localhost:3000/categorias').subscribe(data => {
-        console.log('categorias', data);
         this.categorias = data
     });
   }
