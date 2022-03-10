@@ -1,8 +1,8 @@
 
-const Home = {
-    text: 'Home',
-    link: '/home',
-    icon: 'icon-home'
+const Calendario = {
+    text: 'Calendario',
+    link: '/calendario',
+    icon: 'icon-calendar',
 };
 
 const Auditorias = {
@@ -39,7 +39,7 @@ const Users = {
 
 
 export const menu = [
-    Home,
+    Calendario,
     Auditorias,
     Users,
 

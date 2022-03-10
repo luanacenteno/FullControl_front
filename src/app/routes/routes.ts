@@ -15,10 +15,10 @@ export const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+            { path: '', redirectTo: 'calendario', pathMatch: 'full' },
             { path: 'auditorias', loadChildren: () => import('./auditorias/auditorias.module').then(m => m.AuditoriasModule) },
-            { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) }
+            { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+            { path: 'calendario', loadChildren: () => import('./calendario/calendario.module').then(m => m.CalendarioModule) }
         ]
     },
 
@@ -32,6 +32,6 @@ export const routes: Routes = [
     { path: '500', component: Error500Component },
 */
     // Not found
-    { path: '**', redirectTo: 'home' }
+    { path: '**', redirectTo: 'calendario' }
 
 ];
