@@ -75,7 +75,7 @@ export class ListarComponent implements OnInit, OnDestroy {
         // enableFilter: true,
     };
 
-  const data = http.get<any>('/usuarios');
+  const data = http.get<any>(this.apiUrl + '/usuarios');
         this.rowData1 = data;
         this.rowData2 = data;
         this.rowData3 = data;
