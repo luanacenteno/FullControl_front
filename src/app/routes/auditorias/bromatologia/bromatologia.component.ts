@@ -5,6 +5,7 @@ import { CustomValidators } from 'ngx-custom-validators';
 import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 const swal = require('sweetalert');
 const BROMATOLOGIA = 1;
@@ -16,6 +17,8 @@ const BROMATOLOGIA = 1;
 })
 
 export class BromatologiaComponent implements OnInit {
+
+    apiUrl: any;
 
     //Iniciar auditoria
 
@@ -43,7 +46,8 @@ export class BromatologiaComponent implements OnInit {
 
     constructor( fb: FormBuilder, public http: HttpClient, private router: Router) {
 
-        
+    this.apiUrl = environment.apiUrl;
+    console.log(this.apiUrl);
         
         this.saveForm= {
             puntos: '',
@@ -99,10 +103,10 @@ export class BromatologiaComponent implements OnInit {
             return;
         }
         this.nombreCategoria = categoria.nombre;
-        this.http.get('http://localhost:3000/auditorias/' + clienteAuditoria.auditoria_id).subscribe(dataAuditoria => {
+        this.http.get(this.apiUrl + '/auditorias/' + clienteAuditoria.auditoria_id).subscribe(dataAuditoria => {
             this.auditoria = dataAuditoria;
             
-            this.http.get('http://localhost:3000/requisitos?categoria=' + categoria.id).subscribe(data => {
+            this.http.get(this.apiUrl + '/requisitos?categoria=' + categoria.id).subscribe(data => {
                 this.requisitos = data;
                 this.estado = "cerrada";
                 this.filtros = false;
@@ -117,10 +121,10 @@ export class BromatologiaComponent implements OnInit {
             cliente_id: this.clienteSeleccionado,
         };
         // Creamos una nueva auditoria
-        this.http.post('http://localhost:3000/auditorias', body).subscribe(dataAuditoria => {
+        this.http.post(this.apiUrl + '/auditorias', body).subscribe(dataAuditoria => {
             this.auditoria = dataAuditoria;
             this.nombreCategoria = this.getDropDownText(this.categoriaSeleccionada, this.categorias)[0].nombre;
-            this.http.get('http://localhost:3000/requisitos?categoria=' + this.categoriaSeleccionada).subscribe(data => {
+            this.http.get(this.apiUrl + '/requisitos?categoria=' + this.categoriaSeleccionada).subscribe(data => {
                 this.requisitos = data;
                 this.filtros = false;
             });
@@ -132,7 +136,7 @@ export class BromatologiaComponent implements OnInit {
   terminar(){
     const clienteAuditoria = this.getDropDownText(this.clienteSeleccionado, this.clientes)[0];
     if(clienteAuditoria.auditoria_id){
-        this.http.put('http://localhost:3000/auditorias/' + clienteAuditoria.auditoria_id, {}).subscribe(dataAuditoria => {
+        this.http.put(this.apiUrl + '/auditorias/' + clienteAuditoria.auditoria_id, {}).subscribe(dataAuditoria => {
             this.auditoria = dataAuditoria;
         })
 
@@ -150,7 +154,7 @@ export class BromatologiaComponent implements OnInit {
             puntaje: requisito.puntaje
         });
     });
-    this.http.post('http://localhost:3000/puntos_requisitos_auditoria', body).subscribe(data => {
+    this.http.post(this.apiUrl + '/puntos_requisitos_auditoria', body).subscribe(data => {
       this.save = data
       this.saveForm = {
         puntos: '',
@@ -206,15 +210,15 @@ export class BromatologiaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/requisitos').subscribe(data => {
+    this.http.get(this.apiUrl + '/requisitos').subscribe(data => {
         this.requisitos = data
     });
 
-    this.http.get('http://localhost:3000/usuarios/auditoria?rol=cliente').subscribe(data => {
+    this.http.get(this.apiUrl + '/usuarios/auditoria?rol=cliente').subscribe(data => {
         this.clientes = data
     });
 
-    this.http.get('http://localhost:3000/categorias').subscribe(data => {
+    this.http.get(this.apiUrl + '/categorias').subscribe(data => {
         this.categorias = data
     });
   }

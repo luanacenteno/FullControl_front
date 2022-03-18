@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GridOptions } from 'ag-grid-community';
 import * as _ from 'lodash';
+import { environment } from 'src/environments/environment.prod';
 declare var $: any;
 
 @Component({
@@ -11,13 +12,15 @@ declare var $: any;
 })
 export class ListarComponent implements OnInit, OnDestroy {
 
+  apiUrl: any;
+
   resizeEvent = 'resize.ag-grid';
     $win = $(window);
 
     gridOptions: GridOptions;
 
   // Filter Example
-
+  
 
     columnDefsFilter = [{
         headerName: 'Nombre',
@@ -56,7 +59,10 @@ export class ListarComponent implements OnInit, OnDestroy {
 
     constructor(public http: HttpClient) {
 
-      http.get('http://localhost:3000/usuarios').subscribe(data => {
+      this.apiUrl = environment.apiUrl;
+      console.log('APIURL', this.apiUrl);
+
+      http.get(this.apiUrl + '/usuarios').subscribe(data => {
         console.log('usuarios', data);
         this.users = data
       });
@@ -69,7 +75,7 @@ export class ListarComponent implements OnInit, OnDestroy {
         // enableFilter: true,
     };
 
-  const data = http.get<any>('http://localhost:3000/usuarios');
+  const data = http.get<any>('/usuarios');
         this.rowData1 = data;
         this.rowData2 = data;
         this.rowData3 = data;

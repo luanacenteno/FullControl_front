@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GridOptions } from 'ag-grid-community';
 import { BtnCellRenderer } from "./btn-cell-renderer";
 import * as _ from 'lodash';
+import { environment } from 'src/environments/environment.prod';
 declare var $: any;
 
 @Component({
@@ -11,6 +12,8 @@ declare var $: any;
   styleUrls: ['./auditorias.component.scss']
 })
 export class AuditoriasComponent implements OnInit, OnDestroy {
+
+  apiUrl;
 
   // Tabla
   resizeEvent = 'resize.ag-grid';
@@ -53,6 +56,10 @@ export class AuditoriasComponent implements OnInit, OnDestroy {
   auditorias: any;
 
   constructor( public http: HttpClient) { 
+
+    this.apiUrl = environment.apiUrl;
+
+    
     // Filter example
     this.gridOptions = {
       headerHeight: 40,
@@ -64,7 +71,7 @@ export class AuditoriasComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/auditorias').subscribe(data => {
+    this.http.get(this.apiUrl + '/auditorias').subscribe(data => {
         this.auditorias = data
     });
   }

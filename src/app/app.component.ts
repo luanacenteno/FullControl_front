@@ -1,5 +1,4 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-
 import { SettingsService } from './core/settings/settings.service';
 
 @Component({
